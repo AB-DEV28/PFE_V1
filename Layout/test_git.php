@@ -1,3 +1,3 @@
 <?php 
-echo 'rani ntasti brk' ;
+echo 'islam ytasti' ;
 ?>

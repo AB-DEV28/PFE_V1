@@ -26,7 +26,7 @@ $questions = getAllQuestion($idQ);
 <body>
 	<div class="container">
 		<h1>Quiz Participation Form</h1>
-		<form method="post" action="passquiz.php">
+		<form method="post" action="passQuiz.php">
 			<h2><?php echo $titleQ; ?></h2>
 			<?php
 
