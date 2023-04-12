@@ -115,5 +115,17 @@ function getIdQuiz($id_question){
   $titleQ=$IdQuiz['id_quiz'];
   return $titleQ;
 }
+//////////////   function for get Quiz By Id    ////////// 
+function getQuizById($idQ){
+  $conn = connect();
+//2- create requette DB
+$requette ="SELECT * FROM quiz WHERE id_quiz=$idQ";
+//3- execute requette
+$resultat =$conn->query($requette);
+//4- result requette
+$quiz =$resultat->fetchAll();
+//var_dump($quizs);
+return $quiz;
+}
 ?>
 

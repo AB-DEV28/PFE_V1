@@ -7,7 +7,7 @@ session_start();
 
 $idQ = $_GET['id'];
 include '../includes/functions.php';
-include '..  /islam/getQuizById.php';
+//include '../islam/getQuizById.php';
 //$allInfo = getAllInfoQuizById($idQ);
 $titleQ = getTitleQuiz($idQ);
 $questions = getAllQuestion($idQ);
