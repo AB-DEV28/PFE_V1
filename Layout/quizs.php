@@ -48,15 +48,15 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
             <!-- sidebar -->
             <?php include '../includes/sidebar.php'; ?>
             <!-- main Quiz -->
-            <?php 
-            
-                 
-            
-                include '../includes/mainQuizs.php'; 
-           
-            
+            <?php
+
+
+
+            include '../includes/mainQuizs.php';
+
+
             ?>
-            
+
         </div>
     </div>
 
@@ -100,7 +100,8 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
                             <textarea name="desription_quiz" class="form-control" placeholder="Desription of a quiz."></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="date_time_set" min="00:00:00" max="23:59:59" name="quiz_duration" class="form-control" placeholder="00:00:00">
+                        <input name="quiz_duration" type="text" class="form-control timepicker" id="timepicker" placeholder="Select a time">   
+                        <!-- <input type="date_time_set"  min="00:00:00" max="23:59:59" name="quiz_duration" class="form-control" placeholder="00:00:00"> -->
                         </div>
 
                         <div class="modal-footer">
