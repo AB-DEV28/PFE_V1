@@ -59,9 +59,18 @@ $quiz = getQuizById($idQ);
 	<div class="container-fluid">
 		<div class="row">
 			<!-- main Quiz -->
-			
 			<div class="container">
 				<h1>Quiz Participation Form</h1>
+				<!-- alert note -->
+				<?php
+                    if (isset($_GET['note'])) {
+						$note=$_GET['note'];
+                        print '
+                    <div class="alert alert-success">
+                    note is '.$note.'
+                    </div>';
+                    }
+                    ?>
 				<form method="post" action="work.php">
                 <input type="hidden" name="id_User" value="<?php echo $id_User; ?>">
                 <input type="hidden" name="id_Q" value="<?php echo $idQ; ?>">
@@ -147,20 +156,7 @@ $quiz = getQuizById($idQ);
       //}, 5000);
     
   </script> 
-  <?php
-if (isset($_GET['note'])) {
-    $note=$_GET['note'];
-    print "<script>
-Swal.fire({
-    title: 'Note',
-    text: '$note',
-    icon: 'success',
-    confirmButtonText: 'OK',
-    timer: 2000
-  })</script>
-";
-}
-?>
+  
 </body>
 
 </html>
