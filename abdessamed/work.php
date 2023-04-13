@@ -47,6 +47,6 @@ $requette = "INSERT INTO pass_quiz(id_user,id_quiz,date,note) VALUES('" . $id_Us
       if ($er) {
         echo "pessage failed: " . $e->getMessage();
       }else {
-        header('location:pessQuizTesting.php?note='.$note.'');
+        header('location:pessQuizTesting.php?id='.$id_Q.'&note='.$note.'');
       }
 ?>
