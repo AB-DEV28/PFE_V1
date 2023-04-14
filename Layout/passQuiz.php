@@ -4,7 +4,7 @@ session_start();
 //if (!isset($_SESSION['email'])) {
 //	header('location:singIn.php');
 //}
-
+$id_User=$_SESSION['id_user'];
 $idQ = $_GET['id'];
 include '../includes/functions.php';
 //include '../islam/getQuizById.php';
@@ -59,10 +59,21 @@ $quiz = getQuizById($idQ);
 	<div class="container-fluid">
 		<div class="row">
 			<!-- main Quiz -->
-			
 			<div class="container">
 				<h1>Quiz Participation Form</h1>
-				<form method="post" action="passQuiz.php">
+				<!-- alert note -->
+				<?php
+                    if (isset($_GET['note'])) {
+						$note=$_GET['note'];
+                        print '
+                    <div class="alert alert-success">
+                    note is '.$note.'
+                    </div>';
+                    }
+                    ?>
+				<form method="post" action="work.php">
+                <input type="hidden" name="id_User" value="<?php echo $id_User; ?>">
+                <input type="hidden" name="id_Q" value="<?php echo $idQ; ?>">
 					<h2><?php echo $titleQ; ?></h2>
 					<?php
 
@@ -72,28 +83,30 @@ $quiz = getQuizById($idQ);
 						<div class="card">
 							<div class="card-header">Question <?php echo $index + 1; ?></div>
 							<div class="card-body">
-								<p><?php echo $question["title_question"]; ?></p>
+                                <input type="hidden" name="Question_<?php echo $index + 1; ?>" value="<?php echo $question["id_question"]; ?>">
+								
+                                <p><?php echo $question["title_question"]; ?></p>
 								<div class="form-group">
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="question_<?php echo $index; ?>" value="<?php echo $question["ch1"]; ?>">
+										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index + 1; ?>" value="<?php echo $question["ch1"]; ?>">
 										<label class="form-check-label">
 											<?php echo $question["ch1"]; ?>
 										</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="question_<?php echo $index; ?>" value="<?php echo $question["ch2"]; ?>">
+										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index + 1; ?>" value="<?php echo $question["ch2"]; ?>">
 										<label class="form-check-label">
 											<?php echo $question["ch2"]; ?>
 										</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="question_<?php echo $index; ?>" value="<?php echo $question["ch3"]; ?>">
+										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index + 1; ?>" value="<?php echo $question["ch3"]; ?>">
 										<label class="form-check-label">
 											<?php echo $question["ch3"]; ?>
 										</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="question_<?php echo $index; ?>" value="<?php echo $question["ch4"]; ?>">
+										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index + 1; ?>" value="<?php echo $question["ch4"]; ?>">
 										<label class="form-check-label">
 											<?php echo $question["ch4"]; ?>
 										</label>
@@ -104,6 +117,7 @@ $quiz = getQuizById($idQ);
 					<?php
 					}
 					?>
+                    <input type="hidden" name="number_question" value="<?php echo $index; ?>">
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
 			</div>
@@ -142,6 +156,7 @@ $quiz = getQuizById($idQ);
       //}, 5000);
     
   </script> 
+  
 </body>
 
 </html>

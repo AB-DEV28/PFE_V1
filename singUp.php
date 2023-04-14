@@ -1,4 +1,4 @@
-    <?php
+<?php
     session_start();
     if (isset($_SESSION['email'])) {
         header('location:Layout/profile.php');
@@ -11,7 +11,7 @@
         }
         
     }
-    ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +27,7 @@
 <body>
 
     <div class="col-12 p-5">
-    <h1 class="text-center">Sing up</h1>
+        <h1 class="text-center">Sing up</h1>
         <form action="singUp.php" method="post">
             <div class="mb-3">
                 <label for="fname" class="form-label">First Name</label>
