@@ -43,7 +43,7 @@
         
         $requette = "INSERT INTO answers_users(id_user,id_question,answer,answer_case) VALUES('" . $id_User . "','" . $list_id_questions[$i] . "','" . $list_answers[$i] . "','" . $list_notes[$R] . "')";
     
-        $resultat = $conn->query($requette);
+        //$resultat = $conn->query($requette);
         if( $i == $number_question){
             header('location:passQuizTest.php?id='.$id_Q.'&note='.$note);
         }

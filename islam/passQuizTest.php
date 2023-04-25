@@ -155,9 +155,9 @@ $timeout = $time_in_seconds ;
 
     // Set the session start time
     
-      setTimeout(() => {
-        window.location.href = 'http://localhost:81/fromgit/PFE_V1/index.php';
-      }, timeout);
+      //setTimeout(() => {
+      //  window.location.href = 'http://localhost:81/fromgit/PFE_V1/index.php';
+      //}, timeout);
     
   </script> 
   
