@@ -47,7 +47,8 @@ for ($i = 0; $i <= $number_question; $i++) {
 //For each question get the data and store it into the database
 for ($i = 0; $i <= $number_question; $i++) {
     //Create a query to insert the answers of the user into the database
-    $requette = "INSERT INTO answers_users(id_user,id_question,answer,answer_case) VALUES('" . $id_User . "','" . $list_id_questions[$i] . "','" . $list_answers[$i] . "','" . $list_notes[$R] . "')";
+    //$requette = "INSERT INTO answers_users(id_user,id_question,answer,answer_case) VALUES('" . $id_User . "','" . $list_id_questions[$i] . "','" . $list_answers[$i] . "','" . $list_notes[$R] . "')";
+    $requette = "INSERT INTO `answers_users` (`id_user`, `id_question`, `answer`, `answer_case`) VALUES('" . $id_User . "','" . $list_id_questions[$i] . "','" . $list_answers[$i] . "','" . $list_notes[$R] . "')";
 
     //If the result is true set error to 0 else 1
     $resultat = $conn->query($requette);
@@ -57,22 +58,22 @@ for ($i = 0; $i <= $number_question; $i++) {
         $er=1;
       }
 }
-
+header('location:pessQuizTesting.php?id='.$id_Q.'&note='.$note.'');
 //Insert the details of the user pass when all questions have been answered
-$requette = "INSERT INTO pass_quiz(id_user,id_quiz,date,note) VALUES('" . $id_User . "','" . $id_Q . "','" . $data_passage . "','" . $note . "')";
+// $requette = "INSERT INTO pass_quiz(id_user,id_quiz,date,note) VALUES('" . $id_User . "','" . $id_Q . "','" . $data_passage . "','" . $note . "')";
 
-//If the result is true set error to 0 else 1
-$resultat = $conn->query($requette);
-if ($resultat) {
-    $er=0;
-  }else {
-    $er=1;
-  }
+// //If the result is true set error to 0 else 1
+// $resultat = $conn->query($requette);
+// if ($resultat) {
+//     $er=0;
+//   }else {
+//     $er=1;
+//   }
 
-  //Check for errors and redirect accordingly 
-  if ($er) {
-    echo "pessage failed: " . $e->getMessage();
-  }else {
-    header('location:pessQuizTesting.php?id='.$id_Q.'&note='.$note.'');
-  }
+//   //Check for errors and redirect accordingly 
+//   if ($er) {
+//     echo "pessage failed: " . $e->getMessage();
+//   }else {
+//     header('location:pessQuizTesting.php?id='.$id_Q.'&note='.$note.'');
+//   }
 ?>
