@@ -16,7 +16,7 @@ $id_user=$_SESSION['id_user'];
 $conn = connect();
 
 //Insert values into quiz table using SQL query
-$requette ="INSERT INTO quiz(id_user,title_quiz,quiz_description,quiz_duration) 
+$requette ="INSERT INTO `quiz`(`id_user`,`title_quiz`, `quiz_description`,`quiz_duration`) 
             VALUES('$id_user','$title_quiz','$desription_quiz','$quiz_duration')";
 $resultat =$conn->query($requette);
 

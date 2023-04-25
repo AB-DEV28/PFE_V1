@@ -87,6 +87,7 @@
                                     <a class="btn btn-success" data-toggle="modal" data-target="#editQuiz' . $quiz['id_quiz'] . '">Edit</a>
                                     <a class="btn btn-success" href="../includes/manageQuiz.php?idQ=' . $quiz['id_quiz'] . '">Manage</a>
                                     <a class="btn btn-danger" href="../includes/deleteQuiz.php?idQ=' . $quiz['id_quiz'] . '">Delete</a>
+                                    <a class="btn btn-danger" href="../includes/view_result.php?idQ=' . $quiz['id_quiz'] . '">View result</a>
                                 </td>
                               </tr>
                                        ';

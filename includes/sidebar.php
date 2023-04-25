@@ -14,7 +14,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../Layout/passQuiz.php">
+                            <a class="nav-link" href="../Layout/passageQuiz.php">
                                 <span data-feather="shopping-cart"></span>
                                 Passage Quiz
                             </a>
