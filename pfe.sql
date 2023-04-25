@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2023 at 12:32 PM
+-- Generation Time: Apr 25, 2023 at 09:33 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -31,6 +31,7 @@ CREATE TABLE `answers_users` (
   `id_answer_user` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_question` int(11) NOT NULL,
+  `id_quiz` int(11) NOT NULL,
   `answer` int(11) NOT NULL,
   `answer_case` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -39,8 +40,17 @@ CREATE TABLE `answers_users` (
 -- Dumping data for table `answers_users`
 --
 
-INSERT INTO `answers_users` (`id_answer_user`, `id_user`, `id_question`, `answer`, `answer_case`) VALUES
-(1, 0, 1, 1, 0);
+INSERT INTO `answers_users` (`id_answer_user`, `id_user`, `id_question`, `id_quiz`, `answer`, `answer_case`) VALUES
+(1, 0, 1, 0, 1, 0),
+(2, 14, 1, 0, 1, 0),
+(3, 14, 1, 0, 1, 0),
+(4, 14, 1, 0, 2, 0),
+(5, 14, 1, 0, 3, 0),
+(6, 14, 1, 0, 4, 0),
+(7, 14, 1, 0, 1, 0),
+(8, 14, 1, 0, 2, 0),
+(9, 14, 1, 0, 3, 0),
+(10, 14, 1, 0, 4, 0);
 
 -- --------------------------------------------------------
 
@@ -83,7 +93,16 @@ CREATE TABLE `pass_quiz` (
 --
 
 INSERT INTO `pass_quiz` (`id_pass`, `id_user`, `id_quiz`, `date`, `note`) VALUES
-(1, 0, 14, '2023-04-13', -1);
+(1, 0, 14, '2023-04-13', -1),
+(2, 14, 14, '2023-04-25', -1),
+(3, 14, 14, '2023-04-25', -1),
+(4, 14, 14, '2023-04-25', -1),
+(5, 14, 14, '2023-04-25', -1),
+(6, 14, 14, '2023-04-25', -1),
+(7, 14, 14, '2023-04-25', -1),
+(8, 14, 14, '2023-04-25', -1),
+(9, 14, 14, '2023-04-25', -1),
+(10, 14, 14, '2023-04-25', -1);
 
 -- --------------------------------------------------------
 
@@ -125,6 +144,7 @@ CREATE TABLE `quiz` (
   `id_quiz` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `title_quiz` varchar(255) NOT NULL,
+  `situation_quiz` int(11) NOT NULL,
   `url_quiz` varchar(255) NOT NULL,
   `quiz_duration` time NOT NULL,
   `quiz_description` text NOT NULL,
@@ -135,12 +155,12 @@ CREATE TABLE `quiz` (
 -- Dumping data for table `quiz`
 --
 
-INSERT INTO `quiz` (`id_quiz`, `id_user`, `title_quiz`, `url_quiz`, `quiz_duration`, `quiz_description`, `image`) VALUES
-(14, 14, 'test1', 'https://example.com/test.php?id=14', '00:05:00', 'description1', ''),
-(18, 14, 'test 2', 'https://example.com/test.php?id=18', '00:06:00', 'description 2', ''),
-(23, 16, 'tett', 'https://example.com/test.php?id=23', '05:05:00', 'dtt', ''),
-(24, 14, 'test 5', 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=24', '00:05:00', 'description', ''),
-(33, 14, 'test 2', 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=33', '00:13:40', 'dfs', '');
+INSERT INTO `quiz` (`id_quiz`, `id_user`, `title_quiz`, `situation_quiz`, `url_quiz`, `quiz_duration`, `quiz_description`, `image`) VALUES
+(14, 14, 'test1', 0, 'https://example.com/test.php?id=14', '00:05:00', 'description1', ''),
+(18, 14, 'test 2', 0, 'https://example.com/test.php?id=18', '00:06:00', 'description 2', ''),
+(23, 16, 'tett', 0, 'https://example.com/test.php?id=23', '05:05:00', 'dtt', ''),
+(24, 14, 'test 5', 0, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=24', '00:05:00', 'description', ''),
+(33, 14, 'test 2', 0, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=33', '00:13:40', 'dfs', '');
 
 -- --------------------------------------------------------
 
@@ -213,7 +233,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `answers_users`
 --
 ALTER TABLE `answers_users`
-  MODIFY `id_answer_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_answer_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `login_admin`
@@ -225,7 +245,7 @@ ALTER TABLE `login_admin`
 -- AUTO_INCREMENT for table `pass_quiz`
 --
 ALTER TABLE `pass_quiz`
-  MODIFY `id_pass` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pass` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `question`
