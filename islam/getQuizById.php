@@ -17,16 +17,23 @@
 //       return $conn;
 // }
 include "../includes/functions.php";
+// This function queries the database to retrieve information about a quiz by its ID
 function getQuizById($idQ){
-    $conn = connect();
-  //2- create requette DB
+  // Establishes connection to the database
+  $conn = connect();
+
+  // Builds SQL query to select all columns from table `quiz` where the `id_quiz` matches the passed in `$idQ`
   $requette ="SELECT * FROM quiz WHERE id_quiz=$idQ";
-  //3- execute requette
+
+  // Executes the query and saves the result set in the `$resultat` variable
   $resultat =$conn->query($requette);
-  //4- result requette
+
+  // Fetches all rows from the `$resultat` result set and stores them in the `$quiz` array
   $quiz =$resultat->fetchAll();
-  //var_dump($quizs);
+
+  // Returns the `$quiz` array containing the quiz information
   return $quiz;
 }
+
 
 ?>

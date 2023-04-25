@@ -20,11 +20,11 @@ $quiz = getQuizById($idQ);
 
 
 // Assume $row is an associative array containing the result from the MySQL query
-//$time_str = $quiz['quiz_duration']; // replace 'time_column' with the name of your time column
-//$time_int = strtotime($time_str); // convert the time string to a Unix timestamp
-//$time_diff = $time_int - strtotime('00:00:00'); // calculate the difference between the timestamp and midnight
-//$time_in_seconds = date('H', $time_diff) * 3600 + date('i', $time_diff) * 60 + date('s', $time_diff); // convert the time to seconds
-//$timeout = $time_in_seconds ;
+$time_str = $quiz['quiz_duration']; // replace 'time_column' with the name of your time column
+$time_int = strtotime($time_str); // convert the time string to a Unix timestamp
+$time_diff = $time_int - strtotime('00:00:00'); // calculate the difference between the timestamp and midnight
+$time_in_seconds = date('H', $time_diff) * 3600 + date('i', $time_diff) * 60 + date('s', $time_diff); // convert the time to seconds
+$timeout = $time_in_seconds ;
 ?>
 
 
@@ -75,7 +75,7 @@ $quiz = getQuizById($idQ);
                     	</div>';
                     }
                 ?>
-				<form method="POST" action="../islam/work.php">
+				<form method="POST" action="work.php">
                 <input type="hidden" name="id_User" value="<?php echo $id_User; ?>">
                 <input type="hidden" name="id_Q" value="<?php echo $idQ; ?>">
 					<h2><?php echo $titleQ; ?></h2>
@@ -155,9 +155,9 @@ $quiz = getQuizById($idQ);
 
     // Set the session start time
     
-      //setTimeout(() => {
-      //  window.location.href = 'http://localhost:81/fromgit/PFE_V1/index.php';
-      //}, 5000);
+      setTimeout(() => {
+        window.location.href = 'http://localhost:81/fromgit/PFE_V1/index.php';
+      }, timeout);
     
   </script> 
   
