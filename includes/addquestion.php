@@ -17,7 +17,7 @@ $idQ=$_POST['idQ'];
 $conn = connect();
 
 //Insert values into quiz table using SQL query
-$requette ="INSERT INTO question(id_quiz,title_question,ch1,ch2,ch3,ch4,answer) 
+$requette ="INSERT INTO `question`( `id_quiz`,`title_question`,`ch1`, `ch2`, `ch3`, `ch4`, `answer`) 
          VALUES('$idQ','$title_question','$ch1','$ch2','$ch3','$ch4','$answer')";
 $resultat =$conn->query($requette);
 
