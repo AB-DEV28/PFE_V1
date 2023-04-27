@@ -224,7 +224,11 @@ $titleQ = getTitleQuiz($idQ);
     </div>
     <!-- Modal editQuestions -->
     <?php
-    foreach ($questions as $index => $question) { ?>
+    
+    foreach ($questions as $index => $question) { 
+
+        
+        ?>
     <!-- Modal editQuestion -->
     <div class="modal fade" id="editQuestion<?php echo $question['id_question']; ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
@@ -238,27 +242,46 @@ $titleQ = getTitleQuiz($idQ);
                 <div class="modal-body">
                     <form action="editquestion.php" method="post">
                         <input type="hidden" name="idQ" value="<?php echo  $idQ ?>">
+                        <input type="hidden" name="id_question" value="<?php echo  $question['id_question'] ?>">
                         <div class="form-group">
-                            <input type="text" name="title_question" class="form-control" placeholder="<?php echo $questions[''];?>">
+                            <input type="text" name="title_question" class="form-control" placeholder="<?php echo $question['title_question'];?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="ch1" class="form-control" placeholder="choice 1.">
+                            <input type="text" name="ch1" class="form-control" value="<?php echo $question['ch1'];?>" placeholder="choice 1.">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="ch2" class="form-control" placeholder="choice 2.">
+                            <input type="text" name="ch2" class="form-control" value="<?php echo $question['ch2'];?>" placeholder="choice 2.">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="ch3" class="form-control" placeholder="choice 3.">
+                            <input type="text" name="ch3" class="form-control" value="<?php echo $question['ch3'];?>" placeholder="choice 3.">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="ch4" class="form-control" placeholder="choice 4.">
+                            <input type="text" name="ch4" class="form-control" value="<?php echo $question['ch3'];?>" placeholder="choice 4.">
                         </div>
                         <div>
+                            <?php 
+                            $selected1='';
+                            $selected2='';
+                            $selected3='';
+                            $selected4='';
+                            if ($question['answer'] == 'ch1') {
+                                $selected1='selected';
+                            } 
+                            if ($question['answer'] == 'ch2') {
+                                $selected2='selected';
+                            } 
+                            if ($question['answer'] == 'ch3') {
+                                $selected3='selected';
+                            } 
+                            if ($question['answer'] == 'ch4') {
+                                $selected4='selected';
+                            } 
+                            ?>
                             <select name="answer" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                <option value="ch1">choice 1</option>
-                                <option value="ch2">choice 2</option>
-                                <option value="ch3">choice 3</option>
-                                <option value="ch4">choice 4</option>
+                                <option <?php echo $selected1;?> value="ch1">choice 1</option>
+                                <option <?php echo $selected2;?> value="ch2">choice 2</option>
+                                <option <?php echo $selected3;?> value="ch3">choice 3</option>
+                                <option <?php echo $selected4;?> value="ch4">choice 4</option>
                             </select>
                         </div>
                         <div class="modal-footer">

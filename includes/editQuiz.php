@@ -9,13 +9,18 @@ $title_quiz=$_POST['title_quiz'];
 $desription_quiz=$_POST['desription_quiz'];
 $quiz_duration=$_POST['quiz_duration'];
 $id_quiz=$_POST['idQ'];
-
+$situation_quiz=$_POST['situation_quiz'];
+if ($situation_quiz == true) {
+  $situation_quiz=1;
+} else {
+  $situation_quiz=0;
+}
 
 //Create a connection to the database
 $conn = connect();
 
 //Insert values into quiz table using SQL query
-$requette ="UPDATE quiz SET title_quiz='$title_quiz' ,quiz_duration='$desription_quiz' ,quiz_duration='$quiz_duration' WHERE id_quiz=$id_quiz";
+$requette ="UPDATE quiz SET title_quiz='$title_quiz' ,quiz_duration='$desription_quiz',situation_quiz='$situation_quiz' ,quiz_duration='$quiz_duration' WHERE id_quiz=$id_quiz";
 $resultat =$conn->query($requette);
 
   if ($resultat) {
