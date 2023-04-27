@@ -10,7 +10,7 @@ $ch1=$_POST['ch1'];
 $ch2=$_POST['ch2'];
 $ch3=$_POST['ch3'];
 $ch4=$_POST['ch4'];
-$answer=$_POST['answer'];
+$answer=$_POST[$_POST['answer']];
 $idQ=$_POST['idQ'];
 
 //Create a connection to the database

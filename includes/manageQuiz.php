@@ -239,7 +239,7 @@ $titleQ = getTitleQuiz($idQ);
                     <form action="editquestion.php" method="post">
                         <input type="hidden" name="idQ" value="<?php echo  $idQ ?>">
                         <div class="form-group">
-                            <input type="text" name="title_question" class="form-control" placeholder="Title of a question.">
+                            <input type="text" name="title_question" class="form-control" placeholder="<?php echo $questions[''];?>">
                         </div>
                         <div class="form-group">
                             <input type="text" name="ch1" class="form-control" placeholder="choice 1.">
