@@ -46,8 +46,8 @@ for ($i = 0; $i <$number_question; $i++) {
     }
     
     // Insert the user's answer for the current question into the database
-    $requette2 = "INSERT INTO `answers_users` (`id_user`, `id_question`, `answer`, `answer_case`) 
-         VALUES('" . $id_User . "','" . $id_questions. "','" . $answers. "','" . $R . "')";
+    $requette2 = "INSERT INTO `answers_users` (`id_user`,`id_quiz`, `id_question`, `answer`, `answer_case`) 
+         VALUES('" . $id_User . "','" . $id_Q . "','" . $id_questions. "','" . $answers. "','" . $R . "')";
          
          // Check if the SQL query executed successfully or not
          $resultat2 = $conn->query($requette2);
