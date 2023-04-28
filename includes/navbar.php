@@ -1,6 +1,6 @@
 <?php
 include 'functions.php';
-$quizs = getAllQuizs();
+$quizs = getAllQuizsPublic();
 
 ?>
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">

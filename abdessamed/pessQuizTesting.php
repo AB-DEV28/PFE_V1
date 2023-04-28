@@ -1,26 +1,11 @@
 <?php
-// Start session
 session_start();
-//if (!isset($_SESSION['email'])) {
-//	header('location:singIn.php');
-//}
 $id_User=$_SESSION['id_user'];
 $idQ = $_GET['id'];
 include '../includes/functions.php';
-//include '../islam/getQuizById.php';
-//$allInfo = getAllInfoQuizById($idQ);
-$titleQ = getTitleQuiz($idQ);
+$titleQuiz = getTitleQuiz($idQ);
 $questions = getAllQuestion($idQ);
-
-
 $quiz = getQuizById($idQ);
-
-// Assume $row is an associative array containing the result from the MySQL query
-//$time_str = $quiz['quiz_duration']; // replace 'time_column' with the name of your time column
-//$time_int = strtotime($time_str); // convert the time string to a Unix timestamp
-//$time_diff = $time_int - strtotime('00:00:00'); // calculate the difference between the timestamp and midnight
-//$time_in_seconds = date('H', $time_diff) * 3600 + date('i', $time_diff) * 60 + date('s', $time_diff); // convert the time to seconds
-//$timeout = $time_in_seconds ;
 ?>
 
 
@@ -46,23 +31,16 @@ $quiz = getQuizById($idQ);
 </head>
 
 <body>
-	<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-		<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="../index.php">Quizy</a>
-		<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-		<ul class="navbar-nav px-3">
-			<li class="nav-item text-nowrap">
-				<a class="nav-link" href="../includes/logOut.php">Sign out</a>
-			</li>
-		</ul>
-	</nav>
-
+	<?php include '../includes/NavbarWithoutSearch.php' ?>
 	<div class="container-fluid">
 		<div class="row">
+			<!-- sidebar -->
+			<?php include '../includes/sidebar.php' ?>
 			<!-- main Quiz -->
-			<div class="container">
-				<h1>Quiz Participation Form</h1>
-				<!-- alert note -->
-				<?php
+			<main  role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+			<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+					<h1 class="h2">Participation in <?php echo $titleQuiz; ?></h1>
+					<?php
                     if (isset($_GET['note'])) {
 						$note=$_GET['note'];
                         print '
@@ -71,21 +49,19 @@ $quiz = getQuizById($idQ);
                     </div>';
                     }
                     ?>
+				</div>
+				<div class="container">
 				<form method="post" action="work.php">
                 <input type="hidden" name="id_User" value="<?php echo $id_User; ?>">
                 <input type="hidden" name="id_Q" value="<?php echo $idQ; ?>">
-					<h2><?php echo $titleQ; ?></h2>
 					<?php
-
 					// Output each question with choices
 					foreach ($questions as $index => $question) {
 					?>
 						<div class="card">
-							<div class="card-header">Question <?php echo $index ; ?></div>
+							<div class="card-header"><?php echo $index+1 ; ?> : <?php echo $question["title_question"]; ?></div>
 							<div class="card-body">
                                 <input type="hidden" name="Question_<?php echo $index ; ?>" value="<?php echo $question["id_question"]; ?>">
-								
-                                <p><?php echo $question["title_question"]; ?></p>
 								<div class="form-group">
 									<div class="form-check">
 										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch1"]; ?>">
@@ -122,10 +98,9 @@ $quiz = getQuizById($idQ);
 				</form>
 			</div>
 
-
+			</main>
 		</div>
 	</div>
-
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
