@@ -31,55 +31,52 @@ $questions = getAllQuestion($id_Quiz);
 </head>
 
 <body>
-	<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-		<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="../index.php">Quizy</a>
-		<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-		<ul class="navbar-nav px-3">
-			<li class="nav-item text-nowrap">
-				<a class="nav-link" href="../includes/logOut.php">Sign out</a>
-			</li>
-		</ul>
-	</nav>
-
+	<!-- navbar -->
+	<?php include '../includes/NavbarWithSearch.php' ?>
+	
 	<div class="container-fluid">
 		<div class="row">
+			<!-- sidebar -->
+			<?php include '../includes/sidebar.php' ?>
 			<!-- main Quiz -->
-			<div class="container">
-				<h1>Quiz Participation Form</h1>
+			<main  role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+			<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+					<h1 class="h2"><?php echo $titleQuiz; ?></h1>
+				</div>
 				<form method="post" action="work.php">
-					<h2><?php echo $titleQuiz; ?></h2>
 					<?php
 					// Output each question with choices
 					foreach ($questions as $index => $question) {
 					?>
 						<div class="card">
-							<div class="card-header">Question <?php echo $index ; ?></div>
+							<div class="card-header"><?php echo $index+1 ; ?>:<?php echo $question["title_question"];?></div>
 							<div class="card-body">
-                                <input type="hidden" name="Question_<?php echo $index ; ?>" value="<?php echo $question["id_question"]; ?>">
-								
-                                <p><?php echo $question["title_question"]; $tset=getAnswersSlected($question["id_question"],$id_User,$id_Quiz);
-                    echo $tset;  ?></p>
+								<?php 
+								$selectedAnswer=getAnswersSlected($question["id_question"],$id_User,$id_Quiz);
+								echo $selectedAnswer;
+								?>
 								<div class="form-group">
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch1"]; ?>">
+										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch1"]; ?>"<?php echo ($question["ch1"] == $selectedAnswer) ? 'checked' : ''; ?> disabled>
 										<label class="form-check-label">
+
 											<?php echo $question["ch1"]; ?>
 										</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch2"]; ?>">
+										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch2"]; ?>"<?php echo ($question["ch2"] == $selectedAnswer) ? 'checked' : ''; ?> disabled>
 										<label class="form-check-label">
 											<?php echo $question["ch2"]; ?>
 										</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch3"]; ?>">
+										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch3"]; ?>"<?php echo ($question["ch3"] == $selectedAnswer) ? 'checked' : ''; ?> disabled>
 										<label class="form-check-label">
 											<?php echo $question["ch3"]; ?>
 										</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch4"]; ?>">
+										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch4"]; ?>"<?php echo ($question["ch4"] == $selectedAnswer) ? 'checked' : ''; ?> disabled>
 										<label class="form-check-label">
 											<?php echo $question["ch4"]; ?>
 										</label>
@@ -91,9 +88,7 @@ $questions = getAllQuestion($id_Quiz);
 					}
 					?>
 				</form>
-			</div>
-
-
+				</main>
 		</div>
 	</div>
 
