@@ -1,65 +1,72 @@
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Quizs</h1>
-                    <!-- add quiz -->
-                    <div>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Quizs</h1>
+        <!-- add quiz -->
+        <div>
 
-                        <a class="btn btn-primary" data-toggle="modal" data-target="#addQuiz">Add an quiz</a>
-                    </div>
-                </div>
-                <!-- alerts -->
-                <div>
-                    <!-- alert delete -->
-                    <?php
-                    if (isset($_GET['delete']) && $_GET['delete'] == 'ok') {
-                        print '
+            <a class="btn btn-primary" data-toggle="modal" data-target="#addQuiz">Add an quiz</a>
+        </div>
+    </div>
+    <!-- alerts -->
+    <div>
+        <!-- alert delete -->
+        <?php
+        if (isset($_GET['delete']) && $_GET['delete'] == 'ok') {
+            print '
                         <div class="alert alert-success">
                         quiz deleting successfuly
                     </div>';
-                    }
-                    ?>
-                    <!-- alert add -->
-                    <?php
-                    if (isset($_GET['addQ']) && $_GET['addQ'] == 'ok') {
-                        print '
+        }
+        ?>
+        <!-- alert add -->
+        <?php
+        if (isset($_GET['addQ']) && $_GET['addQ'] == 'ok') {
+            print '
                         <div class="alert alert-success">
                         quiz add successfuly
                     </div>';
-                    }
-                    ?>
-                    <!-- alert edit -->
-                    <?php
-                    if (isset($_GET['edidQ']) && $_GET['edidQ'] == 'ok') {
-                        print '
+        }
+        ?>
+        <!-- alert edit -->
+        <?php
+        if (isset($_GET['edidQ']) && $_GET['edidQ'] == 'ok') {
+            print '
                         <div class="alert alert-success">
                         quiz edit successfuly
                     </div>';
-                    }
-                    ?>
-                </div>
-                <!-- list quiz -->
-                <div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Title quiz</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">URL</th>
-                                <th scope="col">Number of questions</th>
-                                <th scope="col">Quiz duration</th>
-                                <th scope="col">Action</th>
+        }
+        ?>
+    </div>
+    <!-- list quiz -->
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title quiz</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">URL</th>
+                    <th scope="col">Situation quiz</th>
+                    <th scope="col">Number of questions</th>
+                    <th scope="col">Quiz duration</th>
+                    <th scope="col">Action</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $i = 0;
-                            foreach ($quizs as $quiz) {
-                                $i++;
-                                $idEL = "url" . $i;
-                                print '
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $i = 0;
+                foreach ($quizs as $quiz) {
+                    $i++;
+                    $idEL = "url" . $i;
+                    if ($quiz['situation_quiz'] == 0) {
+                        $situation_quiz = 'public';
+                    } else {
+                        $situation_quiz = 'private';
+                    }
+
+                    print '
                               <tr>
                                 <th scope="row">' . $i . '</th>
                                 <td>' . $quiz['title_quiz'] . '</td>
@@ -81,6 +88,7 @@
                                         </tr>
                                     </table>
                                 </td>
+                                <td>' . $situation_quiz . '</td>
                                 <td>' . numerQuestionQuiz($quiz['id_quiz']) . '</td>
                                 <td>' . $quiz['quiz_duration'] . '</td>
                                 <td>
@@ -91,10 +99,10 @@
                                 </td>
                               </tr>
                                        ';
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
 
-            </main>
+</main>

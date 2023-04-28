@@ -27,14 +27,13 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
 
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="../css/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- navbar -->
-<?php include '../includes/NavbarWithSearch.php';?>
+    <?php include '../includes/NavbarWithSearch.php'; ?>
 
     <div class="container-fluid">
         <div class="row">
@@ -93,10 +92,13 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
                             <textarea name="desription_quiz" class="form-control" placeholder="Desription of a quiz."></textarea>
                         </div>
                         <div class="form-group">
-                        <input name="quiz_duration" type="text" class="form-control timepicker" id="timepicker" placeholder="Select a time">   
-                        <!-- <input type="date_time_set"  min="00:00:00" max="23:59:59" name="quiz_duration" class="form-control" placeholder="00:00:00"> -->
+                            <input name="quiz_duration" type="text" class="form-control timepicker" id="timepicker" placeholder="Select a time">
+                            <!-- <input type="date_time_set"  min="00:00:00" max="23:59:59" name="quiz_duration" class="form-control" placeholder="00:00:00"> -->
                         </div>
-
+                        <div class="form-check form-switch">
+                            <input class="form-check-input"  name="situation_quiz" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked />
+                            <label class="form-check-label" for="flexSwitchCheckChecked">This quiz is private.</label>
+                        </div>
                         <div class="modal-footer">
 
                             <button type="submit" class="btn btn-primary">Save</button>
@@ -109,7 +111,14 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
     </div>
     <!-- editQuizs -->
     <?php
-    foreach ($quizs as $index => $quiz) { ?>
+    foreach ($quizs as $index => $quiz) { 
+        if ($quiz['situation_quiz']==1) {
+            $situation_chack='checked';
+        } else {
+            $situation_chack='';
+        }
+        
+        ?>
 
         <!-- Modal editQuiz -->
         <div class="modal fade" id="editQuiz<?php echo $quiz['id_quiz']; ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -133,7 +142,10 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
                             <div class="form-group">
                                 <input type="time" name="quiz_duration" class="form-control" value="<?php echo $quiz['quiz_duration']; ?>" placeholder="time">
                             </div>
-
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" name="situation_quiz" type="checkbox" role="switch" id="flexSwitchCheckChecked" <?php echo $situation_chack ?> />
+                                <label class="form-check-label" for="flexSwitchCheckChecked">This quiz is private.</label>
+                            </div>
                             <div class="modal-footer">
 
                                 <button type="submit" class="btn btn-primary">Edit</button>

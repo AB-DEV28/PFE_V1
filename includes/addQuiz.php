@@ -8,6 +8,12 @@ include 'functions.php';
 $title_quiz=$_POST['title_quiz'];
 $desription_quiz=$_POST['desription_quiz'];
 $quiz_duration=$_POST['quiz_duration'];
+$situation_quiz=$_POST['situation_quiz'];
+if ($situation_quiz == true) {
+  $situation_quiz=1;
+} else {
+  $situation_quiz=0;
+}
 
 //Get the id of the user using PHP session variable
 $id_user=$_SESSION['id_user'];
@@ -16,8 +22,8 @@ $id_user=$_SESSION['id_user'];
 $conn = connect();
 
 //Insert values into quiz table using SQL query
-$requette ="INSERT INTO `quiz`(`id_user`,`title_quiz`, `quiz_description`,`quiz_duration`) 
-            VALUES('$id_user','$title_quiz','$desription_quiz','$quiz_duration')";
+$requette ="INSERT INTO `quiz`(`id_user`,`title_quiz`, `quiz_description`,`quiz_duration`,`situation_quiz`) 
+            VALUES('$id_user','$title_quiz','$desription_quiz','$quiz_duration','$situation_quiz')";
 $resultat =$conn->query($requette);
 
 //If insertion is successful, generate a unique URL for the quiz and update the row accordingly

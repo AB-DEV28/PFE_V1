@@ -81,32 +81,32 @@ $quiz = getQuizById($idQ);
 					foreach ($questions as $index => $question) {
 					?>
 						<div class="card">
-							<div class="card-header">Question <?php echo $index + 1; ?></div>
+							<div class="card-header">Question <?php echo $index ; ?></div>
 							<div class="card-body">
-                                <input type="hidden" name="Question_<?php echo $index + 1; ?>" value="<?php echo $question["id_question"]; ?>">
+                                <input type="hidden" name="Question_<?php echo $index ; ?>" value="<?php echo $question["id_question"]; ?>">
 								
                                 <p><?php echo $question["title_question"]; ?></p>
 								<div class="form-group">
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index + 1; ?>" value="<?php echo $question["ch1"]; ?>">
+										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch1"]; ?>">
 										<label class="form-check-label">
 											<?php echo $question["ch1"]; ?>
 										</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index + 1; ?>" value="<?php echo $question["ch2"]; ?>">
+										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch2"]; ?>">
 										<label class="form-check-label">
 											<?php echo $question["ch2"]; ?>
 										</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index + 1; ?>" value="<?php echo $question["ch3"]; ?>">
+										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch3"]; ?>">
 										<label class="form-check-label">
 											<?php echo $question["ch3"]; ?>
 										</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index + 1; ?>" value="<?php echo $question["ch4"]; ?>">
+										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch4"]; ?>">
 										<label class="form-check-label">
 											<?php echo $question["ch4"]; ?>
 										</label>
@@ -117,7 +117,7 @@ $quiz = getQuizById($idQ);
 					<?php
 					}
 					?>
-                    <input type="hidden" name="number_question" value="<?php echo $index; ?>">
+                    <input type="hidden" name="number_question" value="<?php echo $index+1; ?>">
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
 			</div>
@@ -147,7 +147,7 @@ $quiz = getQuizById($idQ);
 	<!--  -->
 	<script data-timeout="<?php //echo $timeout; ?>">
     // Set the session timeout in seconds
-    const timeout = parseInt(document.currentScript.dataset.timeout);; // Change this value to set the desired session timeout in seconds
+    const timeout = parseInt(document.currentScript.dataset.timeout); // Change this value to set the desired session timeout in seconds
 
     // Set the session start time
     
