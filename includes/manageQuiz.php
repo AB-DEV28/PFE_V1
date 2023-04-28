@@ -244,7 +244,7 @@ $titleQ = getTitleQuiz($idQ);
                         <input type="hidden" name="idQ" value="<?php echo  $idQ ?>">
                         <input type="hidden" name="id_question" value="<?php echo  $question['id_question'] ?>">
                         <div class="form-group">
-                            <input type="text" name="title_question" class="form-control" placeholder="<?php echo $question['title_question'];?>">
+                            <input type="text" name="title_question" class="form-control" value="<?php echo $question['title_question'];?>" placeholder="Title question.">
                         </div>
                         <div class="form-group">
                             <input type="text" name="ch1" class="form-control" value="<?php echo $question['ch1'];?>" placeholder="choice 1.">
@@ -264,24 +264,24 @@ $titleQ = getTitleQuiz($idQ);
                             $selected2='';
                             $selected3='';
                             $selected4='';
-                            if ($question['answer'] == 'ch1') {
+                            if ($question['answer'] == $question['ch1']) {
                                 $selected1='selected';
                             } 
-                            if ($question['answer'] == 'ch2') {
+                            if ($question['answer'] == $question['ch2']) {
                                 $selected2='selected';
                             } 
-                            if ($question['answer'] == 'ch3') {
+                            if ($question['answer'] == $question['ch3']) {
                                 $selected3='selected';
                             } 
-                            if ($question['answer'] == 'ch4') {
+                            if ($question['answer'] == $question['ch4']) {
                                 $selected4='selected';
                             } 
                             ?>
                             <select name="answer" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                <option <?php echo $selected1;?> value="ch1">choice 1</option>
-                                <option <?php echo $selected2;?> value="ch2">choice 2</option>
-                                <option <?php echo $selected3;?> value="ch3">choice 3</option>
-                                <option <?php echo $selected4;?> value="ch4">choice 4</option>
+                                <option <?php echo $selected1;?> value="<?php echo $question['ch1'];?>">choice 1</option>
+                                <option <?php echo $selected2;?> value="<?php echo $question['ch2'];?>">choice 2</option>
+                                <option <?php echo $selected3;?> value="<?php echo $question['ch3'];?>">choice 3</option>
+                                <option <?php echo $selected4;?> value="<?php echo $question['ch4'];?>">choice 4</option>
                             </select>
                         </div>
                         <div class="modal-footer">

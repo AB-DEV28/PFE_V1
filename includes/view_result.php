@@ -1,15 +1,13 @@
 <?php
 session_start();
 if (!isset($_SESSION['email'])) {
-    header('location:singIn.php');
+	header('location:singIn.php');
 }
 $idQ = $_GET['idQ'];
-include '../includes/functions.php';
-//$quizs = getAllQuizsOfUser($_SESSION['id_user']);
-$questions = getAllQuestion($idQ);
 
+include '../includes/view_result_functions.php';
+$passagesQuiz = getPassQuizById($idQ);
 
-$urlQ = getUrlQuiz($idQ);
 $titleQ = getTitleQuiz($idQ);
 
 
@@ -37,21 +35,57 @@ $titleQ = getTitleQuiz($idQ);
 
 <body>
 	<!-- navbar -->
-<?php include '../includes/NavbarWithSearch.php';?>
+	<?php include '../includes/NavbarWithSearch.php'; ?>
 
 	<div class="container-fluid">
 		<div class="row">
-            <!-- sidebar -->
-            <?php include '../includes/sidebar.php';?>
+			<!-- sidebar -->
+			<?php include '../includes/sidebar.php'; ?>
 			<!-- main  -->
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">main</h1>
-                </div>
-                <!-- main content -->
-                <div></div>
+			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+					<h1 class="h2"><?php echo $titleQ;?></h1>
+				</div>
+				<!-- main content -->
+				<div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">First name</th>
+								<th scope="col">Last name</th>
+								<th scope="col">Date quiz was passed</th>
+								<th scope="col">Note</th>
+								<th scope="col">Action</th>
 
-            </main>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							$i = 0;
+							foreach ($passagesQuiz as $passageQuiz) {
+								$i++;
+								$full_name=getNameUsersPassQuiz($passageQuiz['id_user']);
+
+								print '
+                              <tr>
+                                <th scope="row">' . $i . '</th>
+                                <td>' . $full_name['first_name'] . '</td>
+                                <td>' . $full_name['last_name'] . '</td>
+                                <td>' . $passageQuiz['date'] . '</td>
+								<td>' . $passageQuiz['note'] . '</td>
+                                <td>
+                                    <a class="btn btn-danger" href="../includes/ViewAnswersUser.php?id_Quiz='.$idQ.'&id_user='.$passageQuiz['id_user'].'">view answers</a>
+                                </td>
+                              </tr>
+                                       ';
+							}
+							?>
+						</tbody>
+					</table>
+				</div>
+
+			</main>
 		</div>
 	</div>
 
@@ -72,7 +106,7 @@ $titleQ = getTitleQuiz($idQ);
 
 	<!--  -->
 
-  
+
 </body>
 
 </html>
