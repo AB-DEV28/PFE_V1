@@ -4,7 +4,8 @@ session_start();
 if (!isset($_SESSION['email'])) {
 	header('location:singIn.php');
 }
-$id_User=$_SESSION['id_user'];
+$id_User = $_SESSION['id_user'];
+$quizs = getAllQuizsPublic();
 ?>
 <!doctype html>
 <html lang="en">
@@ -29,21 +30,57 @@ $id_User=$_SESSION['id_user'];
 
 <body>
 	<!-- navbar -->
-<?php include '../includes/NavbarWithSearch.php';?>
+	<?php include '../includes/NavbarWithSearch.php'; ?>
 
 	<div class="container-fluid">
 		<div class="row">
-            <!-- sidebar -->
-            <?php include '../includes/sidebar.php';?>
+			<!-- sidebar -->
+			<?php include '../includes/sidebar.php'; ?>
 			<!-- main  -->
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">main</h1>
-                </div>
-                <!-- main content -->
-                <div></div>
+			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
-            </main>
+				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+					<h1 class="h2">Entering a special Quiz.</h1>
+				</div>
+				<div>
+					<form class="form-inline" method="get" action="passQuiz.php">
+						<div class="form-group mb-2">
+						<h4>Put the link:</h4>
+						</div>
+						<div class="form-group mx-sm-3 mb-2">
+							<input name="id" type="text" class="form-control" id="url" placeholder="https//exampel.com">
+						</div>
+						<button type="submit" class="btn btn-primary mb-2">Entering</button>
+					</form>
+				</div>
+				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+					<h1 class="h2">Available Quizs to pass.</h1>
+				</div>
+				<!-- main content -->
+				<div>
+					<!-- list quiz -->
+					<div class="row col-12 mt-4">
+						<!-- card quiz -->
+						<?php
+						foreach ($quizs as $quiz)
+							print '
+            <div class="col-3">
+            <div class="card" style="width: 18rem;">
+                <img src="images/' . $quiz['image'] . '" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">' . $quiz['title_quiz'] . '</h5>
+                    <p class="card-text">' . $quiz['quiz_description'] . '</p>
+                    <a href="passQuiz.php?id=' . $quiz['id_quiz'] . '" class="btn btn-primary">Participate</a>
+                </div>
+            </div>
+        </div>
+            ';
+						?>
+
+					</div>
+				</div>
+
+			</main>
 		</div>
 	</div>
 
@@ -64,7 +101,7 @@ $id_User=$_SESSION['id_user'];
 
 	<!--  -->
 
-  
+
 </body>
 
 </html>

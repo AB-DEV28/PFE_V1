@@ -1,16 +1,15 @@
 <?php
-    session_start();
-    if (isset($_SESSION['email'])) {
-        header('location:Layout/profile.php');
+session_start();
+if (isset($_SESSION['email'])) {
+    header('location:Layout/profile.php');
+}
+include 'includes/navbar.php';
+$showAlart = 0;
+if (!empty($_POST)) {
+    if (AddUser($_POST)) {
+        $showAlart = 1;
     }
-    include 'includes/navbar.php';
-    $showAlart =0;
-    if(!empty($_POST)){
-        if (AddUser($_POST)) {
-            $showAlart =1;
-        }
-        
-    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,15 +48,15 @@
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
-    <?php 
-include 'includes/footer.php';
-?>
+    <?php
+    include 'includes/footer.php';
+    ?>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.min.js"></script>
-<?php 
-if($showAlart == 1){
-print"<script>
+<?php
+if ($showAlart == 1) {
+    print "<script>
 Swal.fire({
     title: 'successfully',
     text: 'The user has been added successfully.',
@@ -68,4 +67,5 @@ Swal.fire({
 ";
 }
 ?>
+
 </html>

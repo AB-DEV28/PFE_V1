@@ -29,7 +29,7 @@ session_start();
                 <div class="card-body">
                     <h5 class="card-title">' . $quiz['title_quiz'] . '</h5>
                     <p class="card-text">' . $quiz['quiz_description'] . '</p>
-                    <a href="#" class="btn btn-primary">Participate</a>
+                    <a href="Layout/passQuiz.php?id='.$quiz['id_quiz'].'" class="btn btn-primary">Participate</a>
                 </div>
             </div>
         </div>

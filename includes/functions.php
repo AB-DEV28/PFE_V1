@@ -17,10 +17,10 @@ try {
   return $conn;
 }
 //////////////   function for get quizs from data base    ////////// 
-function getAllQuizs(){
+function getAllQuizsPublic(){
   $conn = connect();
 //2- create requette DB
-$requette ="SELECT * FROM quiz";
+$requette ="SELECT * FROM quiz WHERE situation_quiz='0'";
 //3- execute requette
 $resultat =$conn->query($requette);
 //4- result requette
