@@ -1,23 +1,8 @@
 <?php
 session_start();
-include '../includes/functions.php';
 if (!isset($_SESSION['email'])) {
     header('location:singIn.php');
 }
-        
-
-
-if (isset($_POST['id_Uers'])) {
-    $Id_User=$_POST['id_Uers'];
-$F_name=$_POST['fname'];
-$L_namme=$_POST['lname'];
-$Email=$_POST['email'];
-$password=$_POST['mp'];
-$conn = connect();
-$requette ="UPDATE `users` SET first_name='$F_name' ,last_name='$L_namme' ,email='$Email' ,mp='$password' WHERE id_user=$id_question";
-$resultat =$conn->query($requette);
-}
-
 ?>
 
 
@@ -61,7 +46,7 @@ $resultat =$conn->query($requette);
                 <!-- Profile content -->
                     <div class="col-12 p-5">
                         <h1 class="text-center">Sing up</h1>
-                        <form action="profile.php" method="post">
+                        <form action="../includes/editProfile.php" method="post">
                             <input type="hidden" name="id_Uers" value="<?php  $_SESSION['id_user'];?>">
                             <div class="mb-3">
                                 <label for="fname" class="form-label">First Name</label>
