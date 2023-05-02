@@ -4,9 +4,9 @@ include '../includes/functions.php';
 session_start();
 
 
-//if (!isset($_SESSION['email'])) {
-//	header('location:singIn.php');
-//}
+if (!isset($_SESSION['email'])) {
+	header('location:../singIn.php');
+}
 
 $idQ = $_GET['id'];
 
