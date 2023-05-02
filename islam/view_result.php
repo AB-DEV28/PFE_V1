@@ -16,6 +16,8 @@ $titleQ = getTitleQuiz($idQ);
 $questions = getAllQuestion($idQ);
 $quiz = getQuizById($idQ);
 
+
+
 //print_r($quiz);
 ?>
 
@@ -67,7 +69,7 @@ $quiz = getQuizById($idQ);
                     	</div>';
                     }
                 ?>
-				<form method="POST" action="work.php">
+				<form id="myForm" method="POST" action="work.php" >
                 <input type="hidden" name="id_User" value="<?php echo $id_User; ?>">
                 <input type="hidden" name="id_Q" value="<?php echo $idQ; ?>">
 					<h2><?php echo $titleQ; ?></h2>
@@ -84,25 +86,25 @@ $quiz = getQuizById($idQ);
                                 <p><?php echo $question["title_question"]; ?></p>
 								<div class="form-group">
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index + 1; ?>" value="<?php echo $question["ch1"]; ?>">
+										<input class="form-check-input" disabled checked type="radio" onclick="false" name="answer_Question_<?php echo $index + 1; ?>" value="<?php echo $question["ch1"]; ?>">
 										<label class="form-check-label">
 											<?php echo $question["ch1"]; ?>
 										</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index + 1; ?>" value="<?php echo $question["ch2"]; ?>">
+										<input class="form-check-input" disabled type="radio" name="answer_Question_<?php echo $index + 1; ?>" value="<?php echo $question["ch2"]; ?>">
 										<label class="form-check-label">
 											<?php echo $question["ch2"]; ?>
 										</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index + 1; ?>" value="<?php echo $question["ch3"]; ?>">
+										<input class="form-check-input" disabled type="radio" name="answer_Question_<?php echo $index + 1; ?>" value="<?php echo $question["ch3"]; ?>">
 										<label class="form-check-label">
 											<?php echo $question["ch3"]; ?>
 										</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index + 1; ?>" value="<?php echo $question["ch4"]; ?>">
+										<input class="form-check-input" disabled type="radio" name="answer_Question_<?php echo $index + 1; ?>" value="<?php echo $question["ch4"]; ?>">
 										<label class="form-check-label">
 											<?php echo $question["ch4"]; ?>
 										</label>
@@ -115,12 +117,21 @@ $quiz = getQuizById($idQ);
 					?>
                     <input type="hidden" name="number_question" value="<?php echo $index; ?>">
 					<button type="submit" class="btn btn-primary">Submit</button>
+					<style input>
+		input[type="radio"][disabled] {
+  cursor: not-allowed;
+  color: inherit;
+  opacity: 1;
+}
+		
+	</style>
 				</form>
 			</div>
 
 
 		</div>
 	</div>
+	
 
 	<!-- Bootstrap core JavaScript
     ================================================== -->
@@ -141,6 +152,16 @@ $quiz = getQuizById($idQ);
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.1/dist/Chart.min.js"></script>
 
 	<!--  -->
+	<script>
+		var form = document.getElementById("myForm");
+		var inputs = form.getElementsByTagName("input");
+		for (var i = 0; i < inputs.length; i++) {
+			if(i == 0 ){
+				// inputs[i].checked = true;
+			}
+		  
+		}
+	</script>
 	<script data-timeout="<?php //echo $timeout; ?>">
     // Set the session timeout in seconds
     const timeout = parseInt(document.currentScript.dataset.timeout);; // Change this value to set the desired session timeout in seconds
