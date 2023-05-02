@@ -56,8 +56,13 @@ $quiz = getQuizById($idQ);
 
 	<div class="container-fluid">
 		<div class="row">
+			<!-- sidebar -->
+			<?php
+			$activeMarke = 'mypassage';
+			 include '../includes/sidebar.php'; 
+			 ?>
 			<!-- main Quiz -->
-			<div class="container">
+			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 				<h1>Quiz Participation Form</h1>
 				<!-- alert note -->
 				<?php
@@ -126,7 +131,7 @@ $quiz = getQuizById($idQ);
 		
 	</style>
 				</form>
-			</div>
+</main>
 
 
 		</div>

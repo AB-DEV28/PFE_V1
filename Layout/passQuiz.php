@@ -42,7 +42,10 @@ $quiz = getQuizById($idQ);
 	<div class="container-fluid">
 		<div class="row">
 			<!-- sidebar -->
-			<?php include '../includes/sidebar.php' ?>
+			<?php 
+			$activeMarke = 'passagequiz';
+			include '../includes/sidebar.php' 
+			?>
 			<!-- main Quiz -->
 			<main  role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 			<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -58,7 +61,7 @@ $quiz = getQuizById($idQ);
                     ?>
 				</div>
 				<div class="container">
-				<form method="post" action="work.php">
+				<form method="post" action="../includes/passQuizFunction.php">
                 <input type="hidden" name="id_User" value="<?php echo $id_User; ?>">
                 <input type="hidden" name="id_Q" value="<?php echo $idQ; ?>">
 					<?php

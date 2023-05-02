@@ -49,7 +49,10 @@ $quizs =$resultat->fetchAll();
     <div class="container-fluid">
         <div class="row">
             <!-- sidebar -->
-            <?php include '../includes/sidebar.php'; ?>
+            <?php 
+            $activeMarke = 'mypassage';
+            include '../includes/sidebar.php'; 
+            ?>
             <!-- main Quiz -->
             <?php
 

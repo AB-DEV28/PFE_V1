@@ -15,6 +15,7 @@ if (!empty($_POST)) {
         $_SESSION['email']=$user['email'];
         $_SESSION['mp']=$user['mp'];
         $_SESSION['id_user']=$user['id_user'];
+        $_SESSION['role_admin']=$user['role_admin'];
         header('location:Layout/profile.php');
     }
 }
