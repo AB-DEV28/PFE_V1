@@ -4,6 +4,7 @@ session_start();
 include '../includes/ViewAnswersUserFunctions.php';
 $id_User=$_GET['id_user'];
 $id_Quiz = $_GET['id_Quiz'];
+$id_passQuiz=$_GET['id_passQuiz'];
 $titleQuiz = getTitleQuiz($id_Quiz);
 $questions = getAllQuestion($id_Quiz);
 ?>
@@ -55,30 +56,58 @@ $questions = getAllQuestion($id_Quiz);
 							<div class="card-header"><?php echo $index+1 ; ?>:<?php echo $question["title_question"];?></div>
 							<div class="card-body">
 								<?php 
-								$selectedAnswer=getAnswersSlected($question["id_question"],$id_User,$id_Quiz);
+								$selectedAnswer=getAnswersSlected($question["id_question"],$id_User,$id_Quiz,$id_passQuiz);
 								echo $selectedAnswer;
 								?>
 								<div class="form-group">
-									<div class="form-check">
+									<div class="form-check" <?php if ($question["ch1"] == $selectedAnswer) {			
+															  if ($question["answer"] == $selectedAnswer) {
+																echo 'style="background: #00FF00;"';
+															}else{
+																echo 'style="background: #FF0000;"';
+															}
+														}	
+															  ?>>
 										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch1"]; ?>"<?php echo ($question["ch1"] == $selectedAnswer) ? 'checked' : ''; ?> disabled>
 										<label class="form-check-label">
 
 											<?php echo $question["ch1"]; ?>
 										</label>
 									</div>
-									<div class="form-check">
+									<div class="form-check" <?php if ($question["ch2"] == $selectedAnswer) {			
+															  if ($question["answer"] == $selectedAnswer) {
+																echo 'style="background: #00FF00;"';
+															}else{
+																echo 'style="background: #FF0000;"';
+															}
+														}	
+															  ?>>
 										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch2"]; ?>"<?php echo ($question["ch2"] == $selectedAnswer) ? 'checked' : ''; ?> disabled>
 										<label class="form-check-label">
 											<?php echo $question["ch2"]; ?>
 										</label>
 									</div>
-									<div class="form-check">
+									<div class="form-check" <?php if ($question["ch3"] == $selectedAnswer) {			
+															  if ($question["answer"] == $selectedAnswer) {
+																echo 'style="background: #00FF00;"';
+															}else{
+																echo 'style="background: #FF0000;"';
+															}
+														}	
+															  ?>>
 										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch3"]; ?>"<?php echo ($question["ch3"] == $selectedAnswer) ? 'checked' : ''; ?> disabled>
 										<label class="form-check-label">
 											<?php echo $question["ch3"]; ?>
 										</label>
 									</div>
-									<div class="form-check">
+									<div class="form-check" <?php if ($question["ch4"] == $selectedAnswer) {			
+															  if ($question["answer"] == $selectedAnswer) {
+																echo 'style="background: #00FF00;"';
+															}else{
+																echo 'style="background: #FF0000;"';
+															}
+														}	
+															  ?>>
 										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch4"]; ?>"<?php echo ($question["ch4"] == $selectedAnswer) ? 'checked' : ''; ?> disabled>
 										<label class="form-check-label">
 											<?php echo $question["ch4"]; ?>

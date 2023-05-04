@@ -78,7 +78,7 @@ $titleQ = getTitleQuiz($idQ);
                                 <td>' . $passageQuiz['date'] . '</td>
 								<td>' . $passageQuiz['note'] . '</td>
                                 <td>
-                                    <a class="btn btn-danger" href="../includes/ViewAnswersUser.php?id_Quiz='.$idQ.'&id_user='.$passageQuiz['id_user'].'">view answers</a>
+                                    <a class="btn btn-danger" href="../includes/ViewAnswersUser.php?id_Quiz='.$idQ.'&id_user='.$passageQuiz['id_user'].'&id_passQuiz='.$passageQuiz['id_pass'].'">view answers</a>
                                 </td>
                               </tr>
                                        ';
