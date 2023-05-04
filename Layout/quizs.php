@@ -87,7 +87,7 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="../includes/addQuiz.php" method="post">
+                    <form action="../includes/addQuiz.php" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <input type="text" name="title_quiz" class="form-control" placeholder="Title of a quiz.">
                         </div>
@@ -97,6 +97,9 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
                         <div class="form-group">
                             <input name="quiz_duration" type="text" class="form-control timepicker" id="timepicker" placeholder="Select a time">
                             <!-- <input type="date_time_set"  min="00:00:00" max="23:59:59" name="quiz_duration" class="form-control" placeholder="00:00:00"> -->
+                        </div>
+                        <div class="form-group">
+                            <input class="choose-file" type="file" name="image_quiz" class="form-control">
                         </div>
                         <div class="form-check form-switch">
                             <input class="form-check-input"  name="situation_quiz" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked />
@@ -134,7 +137,7 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="../includes/editQuiz.php" method="post">
+                        <form action="../includes/editQuiz.php" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="idQ" value="<?php echo $quiz['id_quiz'] ?>">
                             <div class="form-group">
                                 <input type="text" name="title_quiz" class="form-control" value="<?php echo $quiz['title_quiz']; ?>" placeholder="Title of a quiz.">
@@ -144,6 +147,9 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
                             </div>
                             <div class="form-group">
                                 <input type="time" name="quiz_duration" class="form-control" value="<?php echo $quiz['quiz_duration']; ?>" placeholder="time">
+                            </div>
+                            <div class="form-group">
+                            <input class="choose-file" type="file" name="image_quiz" class="form-control">
                             </div>
                             <div class="form-check form-switch">
                                 <input class="form-check-input" name="situation_quiz" type="checkbox" role="switch" id="flexSwitchCheckChecked" <?php echo $situation_chack ?> />
