@@ -57,11 +57,11 @@ $questions = getAllQuestion($id_Quiz);
 							<div class="card-body">
 								<?php 
 								$selectedAnswer=getAnswersSlected($question["id_question"],$id_User,$id_Quiz,$id_passQuiz);
-								echo $selectedAnswer;
+								$answerCase =getCaseAnswersSlected($question["id_question"],$id_User,$id_Quiz,$id_passQuiz);
 								?>
 								<div class="form-group">
 									<div class="form-check" <?php if ($question["ch1"] == $selectedAnswer) {			
-															  if ($question["answer"] == $selectedAnswer) {
+															  if ($answerCase) {
 																echo 'style="background: #00FF00;"';
 															}else{
 																echo 'style="background: #FF0000;"';
@@ -75,7 +75,7 @@ $questions = getAllQuestion($id_Quiz);
 										</label>
 									</div>
 									<div class="form-check" <?php if ($question["ch2"] == $selectedAnswer) {			
-															  if ($question["answer"] == $selectedAnswer) {
+															  if ($answerCase) {
 																echo 'style="background: #00FF00;"';
 															}else{
 																echo 'style="background: #FF0000;"';
@@ -88,7 +88,7 @@ $questions = getAllQuestion($id_Quiz);
 										</label>
 									</div>
 									<div class="form-check" <?php if ($question["ch3"] == $selectedAnswer) {			
-															  if ($question["answer"] == $selectedAnswer) {
+															  if ($answerCase) {
 																echo 'style="background: #00FF00;"';
 															}else{
 																echo 'style="background: #FF0000;"';
@@ -101,7 +101,7 @@ $questions = getAllQuestion($id_Quiz);
 										</label>
 									</div>
 									<div class="form-check" <?php if ($question["ch4"] == $selectedAnswer) {			
-															  if ($question["answer"] == $selectedAnswer) {
+															  if ($answerCase) {
 																echo 'style="background: #00FF00;"';
 															}else{
 																echo 'style="background: #FF0000;"';

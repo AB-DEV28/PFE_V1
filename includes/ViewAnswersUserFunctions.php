@@ -16,4 +16,13 @@ function getAnswersSlected($id_question,$id_ueser,$id_quiz,$idPassQuiz){
     }
     return $AnswersSlected;
 }
+function getCaseAnswersSlected($id_question,$id_ueser,$id_quiz,$idPassQuiz){
+    $AnswersUser=getAnswersUser($id_ueser,$id_quiz,$idPassQuiz);
+    foreach ($AnswersUser as $AnswerUser) {
+        if ( $AnswerUser['id_question']==$id_question) {
+            $AnswersCase=$AnswerUser['answer_case'];
+        }
+    }
+    return $AnswersCase;
+}
 ?>
