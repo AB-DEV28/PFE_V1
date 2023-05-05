@@ -1,9 +1,10 @@
-<?php 
+<?php
 session_start();
-    include 'includes/navbar.php';
- if(!empty($_POST)){ // button search clicked
-    echo'search';
-        }
+include 'includes/navbar.php';
+if (isset($_GET['role']) && $_GET['role'] == 'blocked') {
+    session_unset();
+    session_destroy();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +30,7 @@ session_start();
                 <div class="card-body">
                     <h5 class="card-title">' . $quiz['title_quiz'] . '</h5>
                     <p class="card-text">' . $quiz['quiz_description'] . '</p>
-                    <a href="Layout/passQuiz.php?id='.$quiz['id_quiz'].'" class="btn btn-primary">Participate</a>
+                    <a href="Layout/passQuiz.php?id=' . $quiz['id_quiz'] . '" class="btn btn-primary">Participate</a>
                 </div>
             </div>
         </div>
@@ -37,9 +38,9 @@ session_start();
         ?>
 
     </div>
-<?php 
-include 'includes/footer.php';
-?>
+    <?php
+    include 'includes/footer.php';
+    ?>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 

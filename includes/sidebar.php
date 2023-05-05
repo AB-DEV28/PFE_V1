@@ -1,3 +1,6 @@
+<?php if ($_SESSION['role_admin']==2) {
+    header('location:../index.php?role=blocked');
+}?>
 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
@@ -25,12 +28,15 @@
                                 My passage
                             </a>
                         </li>
+                        <?php if ($_SESSION['role_admin']==1) {
+                            ?>
                         <li class="nav-item">
-                            <a class="nav-link <?php echo ($activeMarke == 'title5') ? 'active' : ''; ?>" href="#">
+                            <a class="nav-link <?php echo ($activeMarke == 'manageusers') ? 'active' : ''; ?>" href="../Layout/manageUsers.php">
                                 <span data-feather="bar-chart-2"></span>
-                                title5
+                                Manage Users
                             </a>
                         </li>
+                        <?php } ?>
                         <li class="nav-item">
                             <a class="nav-link <?php echo ($activeMarke == 'title6') ? 'active' : ''; ?>" href="#">
                                 <span data-feather="layers"></span>

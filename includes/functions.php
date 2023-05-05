@@ -56,7 +56,7 @@ return $questions;
 function AddUser($data){
   $conn = connect();
   $mphash=md5($data['mp']);
-  $requette ="INSERT INTO users(first_name,last_name,email,mp) VALUES('".$data['fname']."','".$data['lname']."','".$data['email']."','".$mphash."')";
+  $requette ="INSERT INTO users(first_name,last_name,email,mp,role_admin) VALUES('".$data['fname']."','".$data['lname']."','".$data['email']."','".$mphash."',0)";
   $resultat =$conn->query($requette);
   if ($resultat) {
     return true;

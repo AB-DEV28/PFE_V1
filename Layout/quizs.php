@@ -3,7 +3,6 @@ session_start();
 if (!isset($_SESSION['email'])) {
     header('location:singIn.php');
 }
-
 include '../includes/functions.php';
 $quizs = getAllQuizsOfUser($_SESSION['id_user']);
 

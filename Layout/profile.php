@@ -1,8 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['email'])) {
-    header('location:singIn.php');
+    header('location:../singIn.php');
 }
+include '../includes/profileFunction.php';
+$user=getProfileInfo($_SESSION['id_user']);
+editProfile();
 ?>
 
 
@@ -42,28 +45,34 @@ if (!isset($_SESSION['email'])) {
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Profile</h1>
+                    <a class="btn btn-danger" href="../includes/profileFunction.php?Delete_User=<?php echo $user['id_user'] ?>">Delete</a>
                 </div>
                 <!-- Profile content -->
                     <div class="col-12 p-5">
-                        <h1 class="text-center">Sing up</h1>
-                        <form action="../includes/editProfile.php" method="post">
-                            <input type="hidden" name="id_Uers" value="<?php  $_SESSION['id_user'];?>">
+                        <h1 class="text-center">My Information</h1>
+                        <form action="profile.php" method="post">
+                            <input type="hidden" name="id_user" value="<?php echo $user['id_user'];?>">
+                            <input type="hidden" name="mpDB" value="<?php echo $user['mp'];?>" >
                             <div class="mb-3">
                                 <label for="fname" class="form-label">First Name</label>
-                                <input name="fname" value="<?php  echo $_SESSION['fname'];?>" type="text" class="form-control" id="fname">
+                                <input name="fname" value="<?php echo $user['first_name'];?>" type="text" class="form-control" id="fname">
                             </div>
                             <div class="mb-3">
                                 <label for="lname" class="form-label">Last Name</label>
-                                <input name="lname" value="<?php   $_SESSION['lname'];?>" type="text" class="form-control" id="lname">
+                                <input name="lname" value="<?php echo $user['last_name'];?>" type="text" class="form-control" id="lname">
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>
-                                <input name="email" value="<?php   $_SESSION['email'];?>" type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                                <input name="email" value="<?php echo $user['email'];?>" type="email" class="form-control" id="email" aria-describedby="emailHelp">
                                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                             </div>
                             <div class="mb-3">
-                                <label for="mp" class="form-label">Password</label>
-                                <input name="mp" value="<?php  $_SESSION['mp'];?>" type="password" class="form-control" id="mp">
+                                <label for="CurrentPassword" class="form-label">Current Password</label>
+                                <input name="CurrentPassword" type="password" class="form-control" id="CurrentPassword">
+                            </div>
+                            <div class="mb-3">
+                                <label for="NewPassword" class="form-label">New Password</label>
+                                <input name="NewPassword" type="password" class="form-control" id="NewPassword">
                             </div>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </form>

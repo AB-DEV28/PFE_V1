@@ -4,6 +4,7 @@ session_start();
 if (!isset($_SESSION['email'])) {
 	header('location:singIn.php');
 }
+
 $id_User = $_SESSION['id_user'];
 $quizs = getAllQuizsPublic();
 ?>
