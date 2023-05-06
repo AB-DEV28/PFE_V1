@@ -10,7 +10,7 @@ include '../includes/functions.php';
 $id_U = $_SESSION['id_user'];
 $conn = connect();
 
-$requette = "SELECT  pass_quiz.id_quiz, quiz.title_quiz, quiz.quiz_description, pass_quiz.note , pass_quiz.date   FROM pass_quiz INNER JOIN quiz ON quiz.id_quiz=pass_quiz.id_quiz WHERE pass_quiz.id_user = $id_U";
+$requette = "SELECT  pass_quiz.id_pass, pass_quiz.id_quiz, quiz.title_quiz, quiz.quiz_description, pass_quiz.note , pass_quiz.date   FROM pass_quiz INNER JOIN quiz ON quiz.id_quiz=pass_quiz.id_quiz WHERE pass_quiz.id_user = $id_U";
 $resultat =$conn->query($requette);
 $quizs =$resultat->fetchAll();
 

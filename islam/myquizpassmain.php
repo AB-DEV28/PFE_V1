@@ -35,7 +35,7 @@
                                 <td>' . $quiz['note'] . '</td>
                                 <td>' . $quiz['date'] . '</td>
                                 <td>
-                                    <a class="btn btn-danger" href="../islam/view_result.php?id=' . $quiz['id_quiz'] . '">View result</a>
+                                    <a class="btn btn-danger" href="../includes/ViewAnswersUser.php?id_Quiz=' . $quiz['id_quiz'] . '&id_user='.$_SESSION['id_user'].'&id_passQuiz='.$quiz['id_pass'].'">View result</a>
                                 </td>
                               </tr>
                                        ';
