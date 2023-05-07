@@ -45,7 +45,8 @@ $quiz = getQuizById($idQ);
 </head>
 
 <body>
-	<?php include '../includes/NavbarWithoutSearch.php' ?>
+	<!-- navbar -->
+	<?php include '../includes/NavbarOfContent.php' ?>
 	<div class="container-fluid">
 		<div class="row">
 			<!-- sidebar -->

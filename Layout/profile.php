@@ -32,7 +32,7 @@ editProfile();
 
 <body>
     <!-- navbar -->
-    <?php include '../includes/NavbarWithoutSearch.php'; ?>
+    <?php include '../includes/NavbarOfContent.php'; ?>
 
     <div class="container-fluid">
         <div class="row">

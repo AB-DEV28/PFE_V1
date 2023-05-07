@@ -1,10 +1,6 @@
 <?php
 session_start();
 include 'includes/navbar.php';
-if (isset($_GET['role']) && $_GET['role'] == 'blocked') {
-    session_unset();
-    session_destroy();
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">

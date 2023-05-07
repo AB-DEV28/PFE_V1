@@ -39,7 +39,7 @@ $titleQ = getTitleQuiz($idQ);
 
 <body>
     <!-- navbar -->
-<?php include '../includes/NavbarWithoutSearch.php';?>
+<?php include '../includes/NavbarOfContent.php';?>
     </nav>
 
     <div class="container-fluid">

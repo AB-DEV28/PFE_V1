@@ -69,5 +69,17 @@ Swal.fire({
 ";
 }
 ?>
-
+    <?php
+if (isset($_GET['role']) && $_GET['role'] == 'blocked') {
+    print "<script>
+Swal.fire({
+    title: 'Invalid',
+    text: 'your accunet is blocked.',
+    icon: 'error',
+    confirmButtonText: 'OK',
+    timer: 2000
+  })</script>
+";
+}
+?>
 </html>

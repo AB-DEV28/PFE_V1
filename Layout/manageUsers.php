@@ -34,7 +34,7 @@ AddUserWithadmin($_POST);
 
 <body>
     <!-- navbar -->
-    <?php include '../includes/NavbarWithSearch.php'; ?>
+    <?php include '../includes/NavbarOfContent.php'; ?>
 
     <div class="container-fluid">
         <div class="row">

@@ -1,5 +1,8 @@
 <?php if ($_SESSION['role_admin']==2) {
-    header('location:../index.php?role=blocked');
+    session_start();
+    session_unset();
+    session_destroy();
+    header('location:../singIn.php?role=blocked');
 }?>
 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
