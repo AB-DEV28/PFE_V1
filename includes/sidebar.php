@@ -40,12 +40,7 @@
                             </a>
                         </li>
                         <?php } ?>
-                        <li class="nav-item">
-                            <a class="nav-link <?php echo ($activeMarke == 'title6') ? 'active' : ''; ?>" href="#">
-                                <span data-feather="layers"></span>
-                                title6
-                            </a>
-                        </li>
+                        
                     </ul>
 
                 </div>
