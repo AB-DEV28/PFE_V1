@@ -80,7 +80,8 @@ if ($er) {
     echo "pessage failed: " . $e->getMessage();
 } else {
     // Redirect the user to a page showing their quiz results
-    header('location:../Layout/passQuiz.php?id='.$id_Q.'&note='.$note.'');
+    //header('location:../Layout/passQuiz.php?id='.$id_Q.'&note='.$note.'');
+    header('location:../includes/ViewAnswersUser.php?id_Quiz=' . $id_Q . '&id_user='.$id_User.'&id_passQuiz='.$id_pass_tmp.'');
 }
 ?>
 
